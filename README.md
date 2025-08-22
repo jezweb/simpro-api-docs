@@ -19,6 +19,8 @@ mcp__context7__get-library-docs --context7CompatibleLibraryID "/jezweb/simpro-ap
 ## 📁 Structure
 
 - `api-reference/` - Complete API reference documentation
+  - `simpro-api.md` - Complete API reference in single file (5MB, 180k+ lines)
+  - `sections/` - Split into 300+ smaller files by API resource for better Context7 indexing
 - `guides/` - Getting started guides and examples  
 - `scripts/` - Update and maintenance scripts
 - `swagger.json` - Original OpenAPI 2.0 specification (23MB)
@@ -44,5 +46,6 @@ This documentation is generated from SimPro's official Swagger specification. To
 ---
 
 **Last Updated:** $(date)
-**API Version:** 1.0
+**API Version:** 1.0  
 **Documentation Size:** ~5MB Markdown + 23MB JSON
+**Files:** 307 split sections for optimized Context7 indexing
