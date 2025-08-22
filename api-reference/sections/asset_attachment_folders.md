@@ -1,0 +1,491 @@
+# Asset Attachment Folders
+
+## e62d8d7799ca9935ed2c6dec4af0188c
+
+<a id="opIde62d8d7799ca9935ed2c6dec4af0188c"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/ \
+  -H 'Accept: application/json'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/', headers = headers)
+
+print(r.json())
+
+```
+
+`GET /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/`
+
+*List all asset attachment folders.*
+
+<h3 id="e62d8d7799ca9935ed2c6dec4af0188c-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|companyID|path|integer|true|A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />|
+|siteID|path|integer|true|A valid site id|
+|assetID|path|integer|true|A valid asset id|
+|search|query|string|false|Search result must have a match on all provided fields or a match on any of the provided fields.|
+|columns|query|array[string]|false|When listing or searching a resource, specify which columns to be displayed|
+|pageSize|query|integer|false|The maximum number of results to be returned by a request.|
+|page|query|integer|false|Set the page number on paginated request|
+|orderby|query|array[string]|false|Set the order of the requested records, by prefixing '-' on the column name you can get records by descending order. Comma separated list can also be provided.|
+|limit|query|integer|false|Set the limit of number of records in a request|
+
+#### Detailed descriptions
+
+**companyID**: A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />
+For more information about Multi-company, see:<br />
+https://helpguide.simprogroup.com/Content/Service-and-Enterprise/Multi-company.htm
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+|search|all|
+|search|any|
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "ID": 12345,
+    "Name": "Images"
+  }
+]
+```
+
+<h3 id="e62d8d7799ca9935ed2c6dec4af0188c-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|List all asset attachment folders.|Inline|
+
+<h3 id="e62d8d7799ca9935ed2c6dec4af0188c-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» ID|integer|true|none|none|
+|» Name|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## d6486daa2a45c05369c463ec638eb44a
+
+<a id="opIdd6486daa2a45c05369c463ec638eb44a"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/ \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```javascript
+const inputBody = '{
+  "ParentID": 12345,
+  "Parent": 0,
+  "Name": "Images"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/', headers = headers)
+
+print(r.json())
+
+```
+
+`POST /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/`
+
+*Create a new asset attachment folder.*
+
+> Body parameter
+
+```json
+{
+  "ParentID": 12345,
+  "Parent": 0,
+  "Name": "Images"
+}
+```
+
+<h3 id="d6486daa2a45c05369c463ec638eb44a-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|companyID|path|integer|true|A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />|
+|siteID|path|integer|true|A valid site id|
+|assetID|path|integer|true|A valid asset id|
+|body|body|object|true|Asset attachment folder object|
+|» ParentID|body|integer¦null|false|Deprecated: Please use Parent field. The ID of a parent folder.|
+|» Parent|body|integer|false|ID of a asset attachment folder|
+|» Name|body|string|true|none|
+
+#### Detailed descriptions
+
+**companyID**: A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />
+For more information about Multi-company, see:<br />
+https://helpguide.simprogroup.com/Content/Service-and-Enterprise/Multi-company.htm
+
+> Example responses
+
+> 201 Response
+
+```json
+{
+  "ID": 12345,
+  "ParentID": 12345,
+  "Parent": 12345,
+  "Name": "Images"
+}
+```
+
+<h3 id="d6486daa2a45c05369c463ec638eb44a-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Asset attachment folder created successfully.|Inline|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|body contains invalid data.|None|
+
+<h3 id="d6486daa2a45c05369c463ec638eb44a-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» ID|integer|true|none|none|
+|» ParentID|integer¦null|false|none|Deprecated: Please use Parent field. The ID of a parent folder.|
+|» Parent|object¦null|false|none|Parent folder information. Set null if this folder has no parent.|
+|»» ID|integer|false|none|none|
+|»» Name|string|false|none|none|
+|» Name|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## 35d7fb7caab8750f5cc1746ff103a8c2
+
+<a id="opId35d7fb7caab8750f5cc1746ff103a8c2"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID} \
+  -H 'Accept: application/json'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}', headers = headers)
+
+print(r.json())
+
+```
+
+`GET /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}`
+
+*Retrieve details for a specific asset attachment folder.*
+
+<h3 id="35d7fb7caab8750f5cc1746ff103a8c2-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|companyID|path|integer|true|A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />|
+|siteID|path|integer|true|A valid site id|
+|assetID|path|integer|true|A valid asset id|
+|folderID|path|integer|true|A valid folder id|
+|columns|query|array[string]|false|When listing or searching a resource, specify which columns to be displayed|
+
+#### Detailed descriptions
+
+**companyID**: A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />
+For more information about Multi-company, see:<br />
+https://helpguide.simprogroup.com/Content/Service-and-Enterprise/Multi-company.htm
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "ID": 12345,
+  "ParentID": 12345,
+  "Parent": 12345,
+  "Name": "Images"
+}
+```
+
+<h3 id="35d7fb7caab8750f5cc1746ff103a8c2-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Asset attachment folder details.|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Asset attachment folder not found.|None|
+
+<h3 id="35d7fb7caab8750f5cc1746ff103a8c2-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» ID|integer|true|none|none|
+|» ParentID|integer¦null|false|none|Deprecated: Please use Parent field. The ID of a parent folder.|
+|» Parent|object¦null|false|none|Parent folder information. Set null if this folder has no parent.|
+|»» ID|integer|false|none|none|
+|»» Name|string|false|none|none|
+|» Name|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## 00417ce40d45c7a56c7a9e075284ef54
+
+<a id="opId00417ce40d45c7a56c7a9e075284ef54"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID} \
+  -H 'Content-Type: application/json'
+
+```
+
+```javascript
+const inputBody = '{
+  "ParentID": 12345,
+  "Parent": 0,
+  "Name": "Images"
+}';
+const headers = {
+  'Content-Type':'application/json'
+};
+
+fetch('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json'
+}
+
+r = requests.patch('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}', headers = headers)
+
+print(r.json())
+
+```
+
+`PATCH /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}`
+
+*Update a asset attachment folder.*
+
+> Body parameter
+
+```json
+{
+  "ParentID": 12345,
+  "Parent": 0,
+  "Name": "Images"
+}
+```
+
+<h3 id="00417ce40d45c7a56c7a9e075284ef54-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|companyID|path|integer|true|A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />|
+|siteID|path|integer|true|A valid site id|
+|assetID|path|integer|true|A valid asset id|
+|folderID|path|integer|true|A valid folder id|
+|body|body|object|true|Asset attachment folder object|
+|» ParentID|body|integer¦null|false|Deprecated: Please use Parent field. The ID of a parent folder.|
+|» Parent|body|integer|false|ID of a asset attachment folder|
+|» Name|body|string|false|none|
+
+#### Detailed descriptions
+
+**companyID**: A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />
+For more information about Multi-company, see:<br />
+https://helpguide.simprogroup.com/Content/Service-and-Enterprise/Multi-company.htm
+
+<h3 id="00417ce40d45c7a56c7a9e075284ef54-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|Asset attachment folder updated successfully.|None|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|body contains invalid data.|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## e2d1db8226eb1436206ed2b5a40183e2
+
+<a id="opIde2d1db8226eb1436206ed2b5a40183e2"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X DELETE /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}
+
+```
+
+```javascript
+
+fetch('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}',
+{
+  method: 'DELETE'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+
+r = requests.delete('/api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}')
+
+print(r.json())
+
+```
+
+`DELETE /api/v1.0/companies/{companyID}/sites/{siteID}/assets/{assetID}/attachments/folders/{folderID}`
+
+*Delete a asset attachment folder.*
+
+<h3 id="e2d1db8226eb1436206ed2b5a40183e2-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|companyID|path|integer|true|A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />|
+|siteID|path|integer|true|A valid site id|
+|assetID|path|integer|true|A valid asset id|
+|folderID|path|integer|true|A valid folder id|
+
+#### Detailed descriptions
+
+**companyID**: A build with Multi-company setup may have companyID >= 0, other builds use 0 by default.<br />
+For more information about Multi-company, see:<br />
+https://helpguide.simprogroup.com/Content/Service-and-Enterprise/Multi-company.htm
+
+<h3 id="e2d1db8226eb1436206ed2b5a40183e2-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|Asset attachment folder deleted successfully.|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Asset attachment folder does not exist.|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
